@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Number Checker and Lister</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      input {
+        margin-bottom: 10px;
+        padding: 5px;
+      }
+
+      .list-input {
+        width: 75px;
+      }
+      button {
+        padding: 5px 10px;
+      }
+      #result,
+      #prime-list {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Prime Number Checker</h2>
+      <input type="number" id="primeInput" placeholder="Enter a number" />
+      <button onclick="checkPrime()">Check if Prime</button>
+      <div id="result"></div>
+
+      <h2>Prime Number Lister</h2>
+      <input
+        type="number"
+        id="lowerBoundInput"
+        class="list-input"
+        placeholder="Lower bound (opt)"
+      />
+      <input
+        type="number"
+        id="limitInput"
+        class="list-input"
+        placeholder="Upper limit"
+      />
+      <button onclick="listPrimes()">List Primes</button>
+    </div>
+    <div id="prime-list"></div>
+
+    <script>
+      // Function to check if a number is prime
+      function checkPrime() {
+        let num = parseInt(document.getElementById("primeInput").value);
+        let resultDiv = document.getElementById("result");
+        if (isNaN(num) || num <= 1) {
+          resultDiv.textContent = "Please enter a number greater than 1.";
+          return;
+        }
+
+        let isPrime = true;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            isPrime = false;
+            break;
+          }
+        }
+
+        if (isPrime) {
+          resultDiv.textContent = `${num} is a prime number.`;
+        } else {
+          resultDiv.textContent = `${num} is not a prime number.`;
+        }
+      }
+
+      // Function to list all prime numbers within a range
+      function listPrimes() {
+        let lowerBound = parseInt(
+          document.getElementById("lowerBoundInput").value
+        );
+        let limit = parseInt(document.getElementById("limitInput").value);
+        let primeListDiv = document.getElementById("prime-list");
+        primeListDiv.innerHTML = "";
+
+        // Default the lower bound to 2 if left empty or less than 2
+        if (isNaN(lowerBound) || lowerBound < 2) {
+          lowerBound = 2;
+        }
+
+        if (isNaN(limit) || limit <= 1) {
+          primeListDiv.textContent =
+            "Please enter an upper limit greater than 1.";
+          return;
+        }
+
+        if (lowerBound > limit) {
+          primeListDiv.textContent =
+            "Lower bound cannot be greater than upper limit.";
+          return;
+        }
+
+        let primes = [];
+        for (let num = lowerBound; num <= limit; num++) {
+          let isPrime = true;
+          for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+              isPrime = false;
+              break;
+            }
+          }
+          if (isPrime) {
+            primes.push(num);
+          }
+        }
+
+        primeListDiv.innerHTML += `<div>Prime numbers between ${lowerBound} and ${limit}: </div>`;
+        primeListDiv.innerHTML += `<div>${primes.join(", ")}</div>`;
+      }
+    </script>
+  </body>
+</html>
