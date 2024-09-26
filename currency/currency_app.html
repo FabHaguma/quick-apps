@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="currency_style.css" />
+    <title>Currency Converter</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Currency Converter</h1>
+
+      <label for="amountInput">Amount:</label>
+      <input
+        type="number"
+        id="amountInput"
+        placeholder="Enter amount"
+        step="0.1"
+      />
+      <label for="fromCurrency">Currency:</label>
+      <input type="text" id="fromCurrency" placeholder="Enter Currency" />
+
+      <button onclick="fetchCurrencyRates()">Convert</button>
+
+      <div id="conversionResult1" class="result"></div>
+      <div id="conversionResult2" class="result"></div>
+      <div id="conversionResult3" class="result"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
