@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
+    height: 100vh;
     margin: 0;
     /* color: #84fcc4 */
 }
@@ -37,10 +37,10 @@ body {
     padding-bottom: 1rem;
 }
 
-h1, h4{
+h1, h4, h5{
     margin: 0;
 }
-h3{
+h3, h5{
     margin-top: 0;
 }
 
@@ -96,19 +96,18 @@ h3{
     justify-content: space-between;
 }
 
-.btn-add{
-    border: 1px solid blue;
-}
-
 .quantity-input{
     height: 100px;
     width: 130px;
+    border: 0;
     justify-content: space-between;
 }
 
 #btn-add-drink{
     height: 100%;
     width: 100px;
+    border-radius: 10px;
+    border: 0;
     background-color: #ffbb39;
     margin-bottom: 0.5rem;
 }

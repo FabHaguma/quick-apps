@@ -44,60 +44,53 @@
       </div>
 
       <div class="actual-drinks">
-        <div class="drink-rows">
-          <div class="drink-item fx-row fx-cntr">
-            <span>{hm?: 2, gsz: 330, abv: 5}</span>
-            <button class="btn-remove">x</button>
+        <div class="drink-rows" id="drinks-added-here">
+          <!-- <div class="drink-item fx-row fx-cntr">
+            <span>{hm: 2, gsz: 330, abv: 5}</span>
+            <button class="btn-remove" onclick="removeDrink()">x</button>
           </div>
           <div class="drink-item fx-row fx-cntr">
-            <span>{hm?: 2, gsz: 330, abv: 5}</span>
+            <span>{hm: 12, gsz: 70, abv: 5}</span>
             <button class="btn-remove">x</button>
-          </div>
-          <div class="drink-item fx-row fx-cntr">
-            <span>{hm?: 12, gsz: 70, abv: 5}</span>
-            <button class="btn-remove">x</button>
-          </div>
+          </div> -->
         </div>
 
-        <div class="drinks-table">
-          <!-- OTHER ROW START   -   OTHER ROW START   -   OTHER ROW START   -   OTHER ROW START -->
-          <div class="drink-adder">
-            <div class="added-drinks-title fx-cntr">
-              <h4>Add Drinks</h4>
+        <div class="drink-adder">
+          <div class="added-drinks-title fx-cntr">
+            <h4>Add Drinks</h4>
+          </div>
+
+          <div class="drinks-area fx-row">
+            <div class="quantity-input fx-col">
+              <div class="amount-column">
+                <input
+                  type="number"
+                  id="drink-amount"
+                  min="0"
+                  placeholder="How Many?"
+                />
+              </div>
+              <div class="size-column">
+                <input
+                  type="number"
+                  min="1"
+                  id="drink-size"
+                  placeholder="Glass Size (ml)"
+                />
+              </div>
+              <div class="abv-column">
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  id="drink-abv"
+                  placeholder="ABV%"
+                />
+              </div>
             </div>
 
-            <div class="drinks-area fx-row">
-              <div class="quantity-input fx-col">
-                <div class="amount-column">
-                  <input
-                    type="number"
-                    id="drink-amount"
-                    min="0"
-                    placeholder="How Many?"
-                  />
-                </div>
-                <div class="size-column">
-                  <input
-                    type="number"
-                    min="1"
-                    id="drink-size"
-                    placeholder="Glass Size (ml)"
-                  />
-                </div>
-                <div class="abv-column">
-                  <input
-                    type="number"
-                    min="1"
-                    max="100"
-                    id="drink-abv"
-                    placeholder="ABV%"
-                  />
-                </div>
-              </div>
-
-              <div class="btn-add">
-                <button id="btn-add-drink" onclick="addDrink()">Add</button>
-              </div>
+            <div class="btn-add">
+              <button id="btn-add-drink" onclick="addDrink()">Add</button>
             </div>
           </div>
         </div>
@@ -106,8 +99,9 @@
       <div class="btn-calc">
         <button id="btn-calc-final" onclick="calculateBAC()">Calculate</button>
       </div>
-      <div class="result-area">
-        <h2 id="final-result">Your BAC is: 0.00%</h2>
+      <div class="result-area fx-col fx-cntr">
+        <h2 id="male-final-result">Your BAC is: 0.00%</h2>
+        <h5 id="female-final-result"></h5>
       </div>
     </div>
 
