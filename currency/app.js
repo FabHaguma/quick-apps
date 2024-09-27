@@ -18,7 +18,7 @@ function formUrlForToday() {
 
 async function fetchCurrencyRates() {
     const amount = parseFloat(document.getElementById("amountInput").value);
-    const fromCurrency = document.getElementById("fromCurrency").value.toLowerCase();
+    const fromCurrency = document.getElementById("fromCurrency").value.toLowerCase().trim();
     const resultDiv = document.getElementById("conversionResult1");
 
     if (isNaN(amount) || amount <= 0) {

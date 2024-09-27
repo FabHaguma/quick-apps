@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alcohol Tracker</title>
+    <link rel="stylesheet" href="bac_style.css" />
+  </head>
+
+  <body>
+    <div class="container fx-col fx-cntr">
+      <div class="title-area fx-cntr"><h1>Can I Drive?</h1></div>
+
+      <div class="weight fx-cntr">
+        <div class="weight-display fx-cntr">
+          <div><h4>Kilos:</h4></div>
+          <div class="fx-row">
+            <span id="weight-value">70</span>
+            <span>Kgs</span>
+          </div>
+        </div>
+        <div class="btn-crease fx-row">
+          <button class="btn-sign" onclick="decreaseWeightValue()">-</button>
+          <button class="btn-sign" onclick="increaseWeightValue()">+</button>
+        </div>
+      </div>
+
+      <div class="drinking-time fx-cntr">
+        <div class="time-display fx-cntr">
+          <div><h4>Time:</h4></div>
+          <div class="fx-row">
+            <span id="time-display-hour">1h</span>
+            <span id="time-display-minute">00"</span>
+          </div>
+        </div>
+        <div class="btn-crease fx-row">
+          <button class="btn-sign" onclick="decreaseTimeValue()">-</button>
+          <button class="btn-sign" onclick="increaseTimeValue()">+</button>
+        </div>
+      </div>
+
+      <div class="drinks-title">
+        <h3>Alcohol Consumed</h3>
+      </div>
+
+      <div class="actual-drinks">
+        <div class="drink-rows">
+          <div class="drink-item fx-row fx-cntr">
+            <span>{hm?: 2, gsz: 330, abv: 5}</span>
+            <button class="btn-remove">x</button>
+          </div>
+          <div class="drink-item fx-row fx-cntr">
+            <span>{hm?: 2, gsz: 330, abv: 5}</span>
+            <button class="btn-remove">x</button>
+          </div>
+          <div class="drink-item fx-row fx-cntr">
+            <span>{hm?: 12, gsz: 70, abv: 5}</span>
+            <button class="btn-remove">x</button>
+          </div>
+        </div>
+
+        <div class="drinks-table">
+          <!-- OTHER ROW START   -   OTHER ROW START   -   OTHER ROW START   -   OTHER ROW START -->
+          <div class="drink-adder">
+            <div class="added-drinks-title fx-cntr">
+              <h4>Add Drinks</h4>
+            </div>
+
+            <div class="drinks-area fx-row">
+              <div class="quantity-input fx-col">
+                <div class="amount-column">
+                  <input
+                    type="number"
+                    id="drink-amount"
+                    min="0"
+                    placeholder="How Many?"
+                  />
+                </div>
+                <div class="size-column">
+                  <input
+                    type="number"
+                    min="1"
+                    id="drink-size"
+                    placeholder="Glass Size (ml)"
+                  />
+                </div>
+                <div class="abv-column">
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    id="drink-abv"
+                    placeholder="ABV%"
+                  />
+                </div>
+              </div>
+
+              <div class="btn-add">
+                <button id="btn-add-drink" onclick="addDrink()">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-calc">
+        <button id="btn-calc-final" onclick="calculateBAC()">Calculate</button>
+      </div>
+      <div class="result-area">
+        <h2 id="final-result">Your BAC is: 0.00%</h2>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
