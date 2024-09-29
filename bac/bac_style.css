@@ -65,13 +65,21 @@ h3, h5{
 }
 
 .btn-sign{
-    width: 3.2rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 2rem;
+    font-size: medium;
+    font-weight: 500;
+    border: 2px solid rgb(44, 44, 44);
+    border-radius: 5px;
 }
 
 .drink-rows{
-    /* border: 1px solid magenta; */
-    padding-bottom: 1rem;
+    border: 2px solid #ffbb39;
+    margin-bottom: 0.5rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-radius: 5px;
 }
 
 .drink-item{
@@ -86,8 +94,11 @@ h3, h5{
 }
 
 .btn-remove{
-    width: 2rem;
-    height: 1.2rem;
+    width: 1.8rem;
+    height: 1.5rem;
+    font-weight: 700;
+    border: 2px solid rgb(44, 44, 44);
+    border-radius: 5px;
 }
 
 .drinks-area{
@@ -98,7 +109,7 @@ h3, h5{
 
 .quantity-input{
     height: 100px;
-    width: 130px;
+    width: 150px;
     border: 0;
     justify-content: space-between;
 }
@@ -110,6 +121,7 @@ h3, h5{
     border: 0;
     background-color: #ffbb39;
     margin-bottom: 0.5rem;
+    font-size: 50px;
 }
 
 span{
@@ -137,6 +149,35 @@ input{
 #btn-calc-final{
     width: 100%;
     height: 100%;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.uncolored{
+    margin-right: 0.5rem;
+}
+
+.colored-result{
+    margin: 1rem;
+    border: 1px solid #ffbb39;
+    font-weight: bold;
+    padding-left: 0.2rem;
+}
+
+.colored-male{
+    border: 2px solid blue;
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+    background-color: blue;
+    color: white;
+}
+
+.colored-female{
+    border: 2px solid palevioletred;
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+    background-color: palevioletred;
+    color: black;
 }
 
 

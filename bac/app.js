@@ -61,14 +61,24 @@ function addDrink(){
   let size = (txtSize && !isNaN(txtSize)) ? parseInt(txtSize) : 0;
   let abv = (txtAbv && !isNaN(txtAbv)) ? parseFloat(txtAbv) : 0;
 
+  if(amount === 0 || size === 0 || abv === 0) return;
+
   let txt = `{hm: ${amount}, gsz: ${size}, abv: ${abv}}`;
   let pseudo_id = amount +"-"+ size +"-"+ abv;
 
   drinksArray.push({id: pseudo_id, amount: amount, size: size, abv: abv});
 
+  resetAddInputs();
+
   let addHere = document.getElementById("drinks-added-here");
   addHere.innerHTML += `<div class="drink-item fx-row fx-cntr" id="cl-${pseudo_id}"><span> ${txt} </span>
-      <button id="${pseudo_id}" class="btn-remove" onclick="removeDrink(this.id)">x</button></div>`;
+      <button id="${pseudo_id}" class="btn-remove" onclick="removeDrink(this.id)">X</button></div>`;
+}
+
+function resetAddInputs(){
+  document.getElementById("drink-amount").value = "";
+  document.getElementById("drink-size").value = "";
+  document.getElementById("drink-abv").value = "";
 }
 
 function removeDrink(clickedId){
@@ -76,7 +86,6 @@ function removeDrink(clickedId){
   for (let i = 0; i < drinksArray.length; i++) {
     if(drinksArray[i].id === clickedId) drinksArray.splice(i, 1);    
   }
-
 }
 
 function calculateBAC(){
@@ -93,12 +102,12 @@ function calculateBAC(){
   let bacMale = ((totalAlcoholInGrams / getBodyFactor('male')) * 100) - metabolizedBAC;
   let bacFemale = ((totalAlcoholInGrams / getBodyFactor('female')) * 100) - metabolizedBAC;
 
-  console.log("bac male: "+ bacMale)
-  console.log("bac female: "+ bacFemale)
+  let showBacMale = (bacMale < 0.005) ? 0.00 : bacMale.toFixed(3);
+  let showBacFemale = (bacFemale < 0.005) ? 0.00 : bacFemale.toFixed(3);
 
 
-  document.getElementById('male-final-result').textContent = "Your BAC is: "+ bacMale.toFixed(3) +"% Man!";
-  document.getElementById('female-final-result').textContent = "Your BAC is: "+ bacFemale.toFixed(3) +"% Girl!";
+  document.getElementById('male-final-result').textContent = showBacMale +"%";
+  document.getElementById('female-final-result').textContent = showBacFemale +"%";
 
 }
 

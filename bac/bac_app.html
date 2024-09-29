@@ -90,7 +90,7 @@
             </div>
 
             <div class="btn-add">
-              <button id="btn-add-drink" onclick="addDrink()">Add</button>
+              <button id="btn-add-drink" onclick="addDrink()">+</button>
             </div>
           </div>
         </div>
@@ -100,7 +100,12 @@
         <button id="btn-calc-final" onclick="calculateBAC()">Calculate</button>
       </div>
       <div class="result-area fx-col fx-cntr">
-        <h2 id="male-final-result">Your BAC is: 0.00%</h2>
+        <!-- <h2 id="male-final-result">Your BAC is: 0.00%</h2> -->
+        <div class="colored-result fx-row fx-cntr">
+          <div class="uncolored">BAC:</div>
+          <div id="male-final-result" class="colored-male">0.00%</div>
+          <div id="female-final-result" class="colored-female">0.00%</div>
+        </div>
         <h5 id="female-final-result"></h5>
       </div>
     </div>
