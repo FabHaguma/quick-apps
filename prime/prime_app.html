@@ -4,31 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="prime_style.css" />
-    <title>Prime Number Checker and Lister</title>
+    <title>Prime Number Toolkit</title>
   </head>
   <body>
     <div class="container">
-      <h2>Prime Number Checker</h2>
-      <input type="number" id="primeInput" placeholder="Enter a number" />
-      <button onclick="checkPrime()">Check if Prime</button>
-      <div id="result"></div>
+      <h1>Prime Number Toolkit</h1>
 
-      <h2>Prime Number Lister</h2>
-      <input
-        type="number"
-        id="lowerBoundInput"
-        class="list-input"
-        placeholder="Lower bound (opt)"
-      />
-      <input
-        type="number"
-        id="limitInput"
-        class="list-input"
-        placeholder="Upper limit"
-      />
-      <button onclick="listPrimes()">List Primes</button>
+      <!-- Prime Number Checker -->
+      <fieldset>
+        <legend>Prime Number Checker</legend>
+        <label for="primeInput">Enter a whole number (> 1):</label>
+        <input type="number" id="primeInput" placeholder="E.g., 17" />
+        <button onclick="checkPrime()">Check if Prime</button>
+        <div id="result" class="output-area"></div>
+      </fieldset>
+
+      <!-- Prime Number Lister -->
+      <fieldset>
+        <legend>Prime Number Lister</legend>
+        <label for="lowerBoundInput">Lower bound:</label>
+        <input
+          type="number"
+          id="lowerBoundInput"
+          class="list-input"
+          placeholder="≥ 2 (opt)"
+        />
+        <label for="limitInput">Upper limit:</label>
+        <input
+          type="number"
+          id="limitInput"
+          class="list-input"
+          placeholder="Required"
+        />
+        <button onclick="listPrimes()">List Primes</button>
+        <div id="prime-list" class="output-area"></div>
+      </fieldset>
+
+      <!-- Prime Factorization -->
+      <fieldset>
+        <legend>Prime Factorization</legend>
+        <label for="factorInput">Number to factorize (> 1):</label>
+        <input type="number" id="factorInput" placeholder="E.g., 12" />
+        <button onclick="factorizeNumber()">Factorize</button>
+        <div id="factorResult" class="output-area"></div>
+      </fieldset>
+
+      <!-- Find Next/Previous Prime -->
+      <fieldset>
+        <legend>Find Neighboring Primes</legend>
+        <label for="findPrimeInput">Enter a whole number:</label>
+        <input type="number" id="findPrimeInput" placeholder="E.g., 10" />
+        <button onclick="findNextPrime()">Find Next Prime</button>
+        <button onclick="findPrevPrime()">Find Previous Prime</button>
+        <div id="findPrimeResult" class="output-area"></div>
+      </fieldset>
+
+      <!-- Generate First N Primes -->
+      <fieldset>
+        <legend>Generate First N Primes</legend>
+        <label for="firstNInput">How many primes (N > 0):</label>
+        <input type="number" id="firstNInput" placeholder="E.g., 5" />
+        <button onclick="generateFirstNPrimes()">Generate</button>
+        <div id="firstNResult" class="output-area"></div>
+      </fieldset>
     </div>
-    <div id="prime-list"></div>
 
     <script src="app.js"></script>
   </body>
