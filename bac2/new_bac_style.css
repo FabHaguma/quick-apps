@@ -1,0 +1,203 @@
+/* Vibrant Color Palette Variables */
+:root {
+    --primary-bg: #1A237E; /* Deep Indigo background for the body */
+    --app-container-bg: #E8EAF6; /* Light Lavender for app container */
+    --column-bg: #FFFFFF; /* White for columns */
+    
+    --primary-action: #FF4081; /* Vibrant Pink for main call to action (Calculate BAC) */
+    --primary-action-hover: #F50057; /* Darker Pink */
+
+    --secondary-action: #536DFE; /* Vibrant Indigo for other buttons */
+    --secondary-action-hover: #3D5AFE; /* Darker Indigo */
+
+    --accent-color: #FFD740; /* Sunny Yellow for some accents/borders */
+    
+    --text-dark: #263238; /* Dark Slate Grey */
+    --text-medium: #546E7A; /* Lighter Slate Grey */
+    --text-light: #ECEFF1; /* Very Light Grey/White for dark backgrounds */
+
+    --border-color: #C5CAE9; /* Light Indigo/Lavender for borders */
+
+    --male-accent: #2979FF;   /* Bright Blue */
+    --female-accent: #EC407A; /* Strong Pink */
+
+    --safe-bac-bg: #E8F5E9;    /* Light Green */
+    --safe-bac-text: #2E7D32;  /* Dark Green */
+    --safe-bac-border: #A5D6A7;
+
+    --caution-bac-bg: #FFFDE7; /* Light Yellow */
+    --caution-bac-text: #F9A825; /* Dark Yellow */
+    --caution-bac-border: #FFF59D;
+
+    --danger-bac-bg: #FFEBEE;  /* Light Red */
+    --danger-bac-text: #C62828; /* Dark Red */
+    --danger-bac-border: #EF9A9A;
+}
+
+html, body {
+    height: 100%; margin: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--primary-bg); 
+    display: flex; justify-content: center; align-items: center;
+    color: var(--text-dark);
+}
+.app-container {
+    display: flex; width: 95%; max-width: 1450px; height: 90vh; min-height: 720px;
+    background-color: var(--app-container-bg); 
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25); /* Stronger shadow */
+    overflow: hidden; padding: 15px; /* Increased padding */
+    gap: 15px; 
+    box-sizing: border-box;
+}
+.column {
+    flex: 1; background-color: var(--column-bg); padding: 25px; /* Increased padding */
+    border-radius: 10px; /* More rounded */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+    display: flex; flex-direction: column;
+    overflow-y: auto; box-sizing: border-box;
+}
+.column h2 {
+    text-align: center; color: var(--primary-action); /* Use vibrant pink */
+    margin-top: 0; margin-bottom: 25px;
+    font-size: 1.6em; font-weight: 600;
+    border-bottom: 3px solid var(--secondary-action); /* Use vibrant indigo */
+    padding-bottom: 12px;
+}
+.column h3.section-title {
+    margin-top:25px; margin-bottom:15px; font-size: 1.25em; 
+    color: var(--secondary-action); /* Vibrant Indigo */
+    border-bottom: 2px solid var(--app-container-bg); /* Light lavender line */
+    padding-bottom: 8px;
+    font-weight: 500;
+}
+.input-group { margin-bottom: 18px; }
+.input-group label {
+    display: block; margin-bottom: 8px; font-weight: 500; 
+    color: var(--text-medium); font-size: 0.95em;
+}
+.input-group input[type="number"], .input-group select {
+    width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 6px;
+    font-size: 1em; box-sizing: border-box;
+    background-color: #FAFAFA; /* Slightly off-white for inputs */
+    color: var(--text-dark);
+}
+.input-group input[type="number"]:focus, .input-group select:focus {
+    border-color: var(--secondary-action);
+    box-shadow: 0 0 0 2px rgba(83, 109, 254, 0.3); /* Focus ring with secondary action color */
+    outline: none;
+}
+
+.stepper { display: flex; align-items: center; }
+.stepper input[type="number"] { text-align: center; flex-grow: 1; margin: 0 8px; -moz-appearance: textfield; }
+.stepper input[type="number"]::-webkit-outer-spin-button,
+.stepper input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.stepper-button {
+    background-color: var(--app-container-bg); border: 1px solid var(--border-color); 
+    color: var(--secondary-action); /* Vibrant text */
+    font-size: 1.1em; font-weight: bold; cursor: pointer; border-radius: 6px;
+    width: 40px; height: 44px; line-height: 44px; text-align: center; flex-shrink: 0;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.stepper-button:hover { background-color: var(--border-color); }
+.stepper-button:active { transform: scale(0.95); }
+
+
+.manual-drink-inputs-row {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 15px;
+}
+.manual-drink-inputs-row .input-group {
+    flex: 1; min-width: 120px; margin-bottom: 0;
+}
+.manual-drink-inputs-row .input-group label { font-size: 0.9em; margin-bottom: 5px; }
+.manual-drink-inputs-row .input-group input[type="number"] { font-size: 0.95em; padding: 10px;}
+
+.button {
+    display: block; width: 100%; padding: 14px; color: var(--text-light);
+    border: none; border-radius: 8px; font-size: 1.05em; font-weight: 600;
+    cursor: pointer; text-align: center; margin-top: 12px;
+    transition: background-color 0.2s ease-in-out, transform 0.1s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.button:active { transform: translateY(1px); }
+
+.button.add-drink-button { background-color: var(--secondary-action); }
+.button.add-drink-button:hover { background-color: var(--secondary-action-hover); }
+.button.add-preset-button { background-color: var(--secondary-action); margin-top:12px;}
+.button.add-preset-button:hover { background-color: var(--secondary-action-hover); }
+
+.calculate-button {
+    background-color: var(--primary-action); margin-top: 0; font-size: 1.2em; padding: 16px;
+}
+.calculate-button:hover { background-color: var(--primary-action-hover); }
+        
+#drinkListContainer {
+    flex-grow: 1; overflow-y: auto; min-height: 100px; max-height: 280px;
+    border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;
+    margin-bottom: 18px; background-color: #F9F9F9; /* Very light gray */
+}
+#drinkList { list-style-type: none; padding: 0; margin:0; }
+#drinkList li {
+    background-color: var(--app-container-bg); padding: 9px 14px; margin-bottom: 7px;
+    border-radius: 6px; display: flex; justify-content: space-between;
+    align-items: center; font-size: 0.9em; color: var(--text-dark);
+    border-left: 4px solid var(--secondary-action); /* Accent line */
+}
+#drinkList .remove-drink {
+    background-color: var(--text-medium); color: var(--text-light); border: none; border-radius: 4px;
+    padding: 4px 9px; font-size: 0.8em; cursor: pointer; margin-left: 10px;
+    transition: background-color 0.2s;
+}
+#drinkList .remove-drink:hover { background-color: var(--text-dark); }
+#noDrinksText { text-align:center; color: var(--text-medium); font-style: italic; padding:15px;}
+
+.result-section-content { text-align: center; margin-top: 20px; }
+.dual-result-container { display: flex; flex-direction: column; gap: 20px; }
+.dual-result {
+    border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; 
+    background-color: var(--column-bg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.dual-result h4 { 
+    margin-top: 0; margin-bottom: 12px; font-size: 1.15em; 
+    padding-left: 10px; padding-bottom: 5px; font-weight: 600;
+}
+.dual-result.male h4 { color: var(--male-accent); border-left: 4px solid var(--male-accent); }
+.dual-result.female h4 { color: var(--female-accent); border-left: 4px solid var(--female-accent); }
+
+.bac-value-display {
+    font-size: 2em; font-weight: 700; margin-bottom: 10px; padding: 12px;
+    border-radius: 6px; display: block;
+}
+
+.bac-safe { background-color: var(--safe-bac-bg); color: var(--safe-bac-text); border: 1px solid var(--safe-bac-border); }
+.bac-caution { background-color: var(--caution-bac-bg); color: var(--caution-bac-text); border: 1px solid var(--caution-bac-border); }
+.bac-danger { background-color: var(--danger-bac-bg); color: var(--danger-bac-text); border: 1px solid var(--danger-bac-border); }
+
+.bac-message-text { font-size: 0.95em; color: var(--text-medium); margin-bottom: 12px; line-height: 1.5; text-align: left; }
+.info-text { font-size: 0.85em; color: var(--text-medium); margin-top: 8px; text-align: left; line-height: 1.4; }
+.info-text.legal-limit-info { text-align: center; margin-top: 20px; color: var(--text-dark); }
+        
+.results-column-footer { margin-top: auto; padding-top: 20px; }
+.footer-disclaimer {
+    font-size: 0.75em; color: var(--text-medium); border-top: 1px solid var(--border-color);
+    padding-top: 12px; line-height: 1.4; text-align: center;
+}
+
+@media (min-width: 1100px) {
+    .dual-result-container { flex-direction: row; align-items: stretch; }
+    .dual-result { flex: 1; }
+}
+@media (max-width: 900px) { 
+    html, body { align-items: flex-start; height: auto; }
+    .app-container { flex-direction: column; height: auto; width: 95%; max-width: 550px; margin: 20px auto; padding:10px; }
+    .column { flex: none; width: 100%; margin-bottom: 12px; max-height: none; overflow-y: visible; padding:15px; }
+    .app-container { overflow: visible; }
+    .manual-drink-inputs-row { flex-direction: column; }
+    .manual-drink-inputs-row .input-group { min-width: unset; width: 100%; margin-bottom:12px;}
+    #drinkListContainer { max-height: 200px; }
+    .column h2 { font-size: 1.4em; margin-bottom: 20px; }
+    .column h3.section-title { font-size: 1.15em; margin-top:20px; margin-bottom:12px; }
+    .bac-value-display { font-size: 1.7em; }
+    .results-column-footer { margin-top: 25px; }
+}

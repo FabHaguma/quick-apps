@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Can I Drive? - Rwanda BAC Calculator (Vibrant Edition)</title>
+    <link rel="stylesheet" href="new_bac_style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Column 1: Your Details & Quick Add -->
+      <div class="column" id="personalInfoColumn">
+        <h2>Your Details</h2>
+        <div class="input-group">
+          <label for="weight">Your Weight (kg)</label>
+          <div class="stepper">
+            <button
+              class="stepper-button"
+              onclick="updateStepper('weight', -5, 30, 250, 5)"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              id="weight"
+              value="70"
+              min="30"
+              max="250"
+              step="5"
+            />
+            <button
+              class="stepper-button"
+              onclick="updateStepper('weight', 5, 30, 250, 5)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="time">Time Since First Drink (Hours)</label>
+          <div class="stepper">
+            <button
+              class="stepper-button"
+              onclick="updateStepper('time', -0.5, 0, 24, 0.5)"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              id="time"
+              value="1"
+              min="0"
+              max="24"
+              step="0.5"
+            />
+            <button
+              class="stepper-button"
+              onclick="updateStepper('time', 0.5, 0, 24, 0.5)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <h3 class="section-title">Quick Add Common Drinks</h3>
+        <div class="input-group">
+          <label for="presetDrink">Select:</label>
+          <select id="presetDrink">
+            <option value="">-- Choose a drink --</option>
+            <option value='{"name":"Heineken", "size":330, "abv":5}'>
+              Heineken (330ml, 5%)
+            </option>
+            <option value='{"name":"Mützig", "size":330, "abv":5.5}'>
+              Mützig (330ml, 5.5%)
+            </option>
+            <option value='{"name":"Skol", "size":500, "abv":5.1}'>
+              Skol Lager (500ml, 5.1%)
+            </option>
+            <option value='{"name":"Primus", "size":500, "abv":5}'>
+              Primus (500ml, 5%)
+            </option>
+            <option value='{"name":"Waragi", "size":50, "abv":40}'>
+              Waragi (Shot 50ml, 40%)
+            </option>
+            <option value='{"name":"Amarula", "size":50, "abv":17}'>
+              Amarula (50ml, 17%)
+            </option>
+            <option value='{"name":"Akarusho", "size":330, "abv":14}'>
+              Akarusho (330ml, 14%)
+            </option>
+            <option value='{"name":"Exo", "size":250, "abv":18}'>
+              Exo (250ml, 18%)
+            </option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="presetQuantity">Quantity:</label>
+          <input type="number" id="presetQuantity" value="1" min="1" />
+        </div>
+        <button class="button add-preset-button" onclick="addSelectedPreset()">
+          + Add Selected Preset(s)
+        </button>
+      </div>
+
+      <!-- Column 2: Add Drinks Manually & List -->
+      <div class="column" id="drinksColumn">
+        <h2>Manage Drinks</h2>
+        <h3 class="section-title">Add Drink Manually</h3>
+        <div class="manual-drink-inputs-row">
+          <div class="input-group">
+            <label for="numDrinks">Number of drinks</label>
+            <input
+              type="number"
+              id="numDrinks"
+              value="1"
+              min="1"
+              placeholder="e.g., 1"
+            />
+          </div>
+          <div class="input-group">
+            <label for="glassSize">Serving Size (ml)</label>
+            <input
+              type="number"
+              id="glassSize"
+              value="330"
+              min="1"
+              placeholder="e.g., 330"
+            />
+          </div>
+          <div class="input-group">
+            <label for="abv">ABV (%)</label>
+            <input
+              type="number"
+              id="abv"
+              value="5"
+              min="0.1"
+              step="0.1"
+              placeholder="e.g., 5"
+            />
+          </div>
+        </div>
+        <button class="button add-drink-button" onclick="addManualDrink()">
+          + Add Manual Drink(s)
+        </button>
+
+        <h3 class="section-title">Consumed Drinks</h3>
+        <div id="drinkListContainer">
+          <ul id="drinkList"></ul>
+          <p id="noDrinksText">No drinks added yet.</p>
+        </div>
+      </div>
+
+      <!-- Column 3: Results -->
+      <div class="column" id="resultsColumn">
+        <h2>Estimated BAC</h2>
+        <button class="button calculate-button" onclick="calculateBAC()">
+          Calculate BAC
+        </button>
+        <div
+          class="result-section-content"
+          style="margin-top: 15px; display: none"
+        >
+          <div class="dual-result-container">
+            <div class="dual-result male">
+              <h4>For Male Physiology</h4>
+              <div id="bacResultDisplayMale" class="bac-value-display">
+                0.000%
+              </div>
+              <div id="bacMessageMale" class="bac-message-text"></div>
+              <p class="info-text">
+                Est. time to sober: <span id="timeToSoberMale">N/A</span>
+              </p>
+            </div>
+            <div class="dual-result female">
+              <h4>For Female Physiology</h4>
+              <div id="bacResultDisplayFemale" class="bac-value-display">
+                0.000%
+              </div>
+              <div id="bacMessageFemale" class="bac-message-text"></div>
+              <p class="info-text">
+                Est. time to sober: <span id="timeToSoberFemale">N/A</span>
+              </p>
+            </div>
+          </div>
+          <p class="info-text legal-limit-info">
+            Legal BAC limit in Rwanda for driving: <strong>0.08%</strong>.
+            <br />Any alcohol can impair driving.
+          </p>
+        </div>
+        <div class="results-column-footer">
+          <div class="footer-disclaimer">
+            <p>
+              <strong>Disclaimer:</strong> This is an estimate for informational
+              purposes. Individual results vary. Factors like food, metabolism,
+              health, & medication affect BAC.
+              <strong>DO NOT use this to determine fitness to drive.</strong>
+              Safe driving BAC is 0.00%. Never drink & drive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
