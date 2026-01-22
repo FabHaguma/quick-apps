@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="job_files_style.css">
+    <title>Job File Namer</title>
+</head>
+<body>
+    <div class="back-link-wrapper">
+      <a href="../index.html" class="back-link">&larr; Back to Main Page</a>
+    </div>
+    <div class="container">
+        <h1>Job File Namer</h1>
+        <p>Paste your job JSON below to generate filenames.</p>
+        
+        <label for="jsonInput">Job Description JSON:</label>
+        <textarea id="jsonInput" placeholder='{
+  "job_title": "Software Engineer",
+  "company_name": "Tech Corp",
+  ...
+}'></textarea>
+        
+        <details>
+            <summary>Enter details manually</summary>
+            <div class="manual-inputs">
+                <label for="manualCompany">Company Name:</label>
+                <input type="text" id="manualCompany" placeholder="e.g. Tech Corp">
+                
+                <label for="manualJobTitle">Job Title:</label>
+                <input type="text" id="manualJobTitle" placeholder="e.g. Software Engineer">
+            </div>
+        </details>
+
+        <button onclick="generateFilenames()">Generate Filenames</button>
+        
+        <div id="error" style="color: #ff5555; margin-bottom: 20px;"></div>
+        
+        <ul id="resultsList" class="result-list">
+            <!-- Results will appear here -->
+        </ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
