@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="currency_style.css" />
     <title>Currency Converter</title>
   </head>
@@ -11,23 +12,75 @@
       <a href="../index.html" class="back-link">&larr; Back to Main Page</a>
     </div>
     <div class="container">
-      <h1>My Currency Converter</h1>
+      <h1>Currency Converter</h1>
 
-      <label for="amountInput">Amount:</label>
+      <!-- Amount -->
+      <label for="amountInput">Amount</label>
       <input
         type="number"
         id="amountInput"
         placeholder="Enter amount"
-        step="0.1"
+        step="0.01"
+        min="0"
       />
-      <label for="fromCurrency">Currency:</label>
-      <input type="text" id="fromCurrency" placeholder="Enter Currency" />
 
-      <button onclick="fetchCurrencyRates()">Convert</button>
+      <!-- From / Swap / To row -->
+      <div class="currency-row">
+        <div class="currency-col">
+          <label>From</label>
+          <div class="currency-select-wrapper">
+            <input type="text" id="fromSearch" class="currency-search" placeholder="Search..." autocomplete="off" />
+            <select id="fromCurrency"></select>
+          </div>
+        </div>
 
-      <div id="conversionResult1" class="result"></div>
-      <div id="conversionResult2" class="result"></div>
-      <div id="conversionResult3" class="result"></div>
+        <button class="swap-btn" id="swapBtn" title="Swap currencies">&#8646;</button>
+
+        <div class="currency-col">
+          <label>To</label>
+          <div class="currency-select-wrapper">
+            <input type="text" id="toSearch" class="currency-search" placeholder="Search..." autocomplete="off" />
+            <select id="toCurrency"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick pick chips -->
+      <div class="quick-picks">
+        <button class="chip" data-currency="eur">EUR</button>
+        <button class="chip" data-currency="usd">USD</button>
+        <button class="chip" data-currency="gbp">GBP</button>
+        <button class="chip" data-currency="rwf">RWF</button>
+        <button class="chip" data-currency="jpy">JPY</button>
+        <button class="chip" data-currency="cad">CAD</button>
+      </div>
+
+      <!-- Convert -->
+      <button id="convertBtn" class="convert-btn">Convert</button>
+
+      <!-- Main Result -->
+      <div id="mainResult" class="main-result" hidden>
+        <div class="result-amount" id="resultAmount"></div>
+        <div class="result-rate" id="resultRate"></div>
+        <div class="result-reverse" id="resultReverse"></div>
+        <div class="result-date" id="resultDate"></div>
+        <button class="copy-btn" id="copyBtn" title="Copy result">Copy</button>
+      </div>
+
+      <!-- Quick Conversions -->
+      <div id="quickConversions" class="quick-conversions" hidden>
+        <h3>Quick Conversions</h3>
+        <div id="quickList" class="quick-list"></div>
+      </div>
+
+      <!-- History -->
+      <div id="historySection" class="history-section" hidden>
+        <div class="history-header">
+          <h3>Recent</h3>
+          <button class="clear-history-btn" id="clearHistoryBtn">Clear</button>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </div>
     </div>
 
     <script src="app.js"></script>
